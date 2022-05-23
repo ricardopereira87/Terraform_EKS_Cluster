@@ -19,7 +19,6 @@ module "eks" {
       additional_security_group_ids = [aws_security_group.worker_group_mgmt_one.id]
       asg_desired_capacity          = 3
       bootstrap_extra_args          = "--use-max-pods false"
-      associate_public_ip_address   = true
       ec2_ssh_key                   = "KeyPairEKSTrafficAnalizer"
     },
   ]
