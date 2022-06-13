@@ -1,0 +1,42 @@
+@startuml
+
+
+skinparam SameClassWidth true
+skinparam classAttributeIconSize 0
+hide methods
+left to right direction
+
+
+class Cluster_EKS {
+    Version
+    CNI Plugin
+}
+class Node {
+    OS
+}
+
+class Instance_Type{
+    IP address limit
+}
+
+class Pod {
+    IP Address
+    Container
+}
+class ENI {
+    Primary IP address
+    Secondary IP addresses
+}
+
+
+
+Cluster_EKS "1" --> "1..*" Node: has
+
+Node "1" --> "1..*" Pod: runs
+Node "1" --> "1..*" ENI: has
+Node "1" --> "1" Instance_Type: has 
+
+ENI "1" --> "1..*" Pod: provides IP address 
+
+Instance_Type "1" --> "2..*" ENI: can have
+@enduml
